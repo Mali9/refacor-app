@@ -1,6 +1,7 @@
 <?php
 namespace DTApi\Helpers;
 
+use App\Models\User as ModelsUser;
 use Carbon\Carbon;
 use DTApi\Models\Job;
 use DTApi\Models\User;
@@ -60,6 +61,20 @@ class TeHelper
 
         return $time->format('Y-m-d H:i:s');
 
+    }
+
+
+    public function testCreateOrUpdateUser()
+    {
+
+        $faker = Faker::create();
+        $user = factory(User::class)->create([
+            'name' => $faker->name,
+            'email' => $faker->unique()->safeEmail,
+            // and all another user data
+        ]);
+
+        $this->assertInstanceOf(User::class, $user);
     }
 
 }
