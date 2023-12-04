@@ -2,7 +2,7 @@
 
 class SendNotificationService implements SendNotificationInterface
 {
-    function sendNotification($job)
+    function sendNotification($job , $data)
     {
 
         $users = User::all();

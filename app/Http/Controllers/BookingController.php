@@ -291,7 +291,7 @@ class BookingController extends Controller
         $job_data = $this->repository->jobToData($job);
 
         try {
-            $sendNotification = new SendNotification(new SendSmsService(),$job);
+            $sendNotification = new SendNotification(new SendSmsService(),$job,$job_data,'*');
             $sendNotification->send();
             // $this->repository->sendSMSNotificationToTranslator($job);
             return response(['success' => 'SMS sent']);

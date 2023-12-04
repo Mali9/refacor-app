@@ -2,5 +2,5 @@
 
 interface SendNotificationInterface
 {
-    function sendNotification($job);
+    function sendNotification($job,$data = [], $string = null);
 }

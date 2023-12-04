@@ -1,4 +1,5 @@
 <?php
+
 namespace DTApi\Helpers;
 
 use App\Models\User as ModelsUser;
@@ -7,6 +8,7 @@ use DTApi\Models\Job;
 use DTApi\Models\User;
 use DTApi\Models\Language;
 use DTApi\Models\UserMeta;
+use DTApi\Repository\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -49,7 +51,7 @@ class TeHelper
         $difference = $due_time->diffInHours($created_at);
 
 
-        if($difference <= 90)
+        if ($difference <= 90)
             $time = $due_time;
         elseif ($difference <= 24) {
             $time = $created_at->addMinutes(90);
@@ -60,7 +62,6 @@ class TeHelper
         }
 
         return $time->format('Y-m-d H:i:s');
-
     }
 
 
@@ -68,14 +69,14 @@ class TeHelper
     {
 
         $faker = Faker::create();
-        $user = factory(User::class)->create([
+
+        $userRepository = new UserRepository();
+        $userRepository->createOrUpdate('', [
             'name' => $faker->name,
             'email' => $faker->unique()->safeEmail,
             // and all another user data
         ]);
 
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertInstanceOf(User::class, $userRepository);
     }
-
 }
-

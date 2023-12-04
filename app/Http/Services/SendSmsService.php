@@ -2,7 +2,7 @@
 
 class SendSmsService implements SendNotificationInterface
 {
-    function sendNotification($job)
+    function sendNotification($job , $arr = [] , $string = "")
     {
 
         $translators = $this->getPotentialTranslators($job);
