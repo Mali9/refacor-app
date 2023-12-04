@@ -3,7 +3,10 @@ every model has it's own repository and all shared  common methods like (get , f
 so it's a good way to use the repository pattern with it and all extend from the BaseRepository that contain all shared methods and every repo has extend from it plus it's diffrent own functionallity .
 it use dependy injection in every where and that's a good way to use a Singlton Pattern with a single object .
 
-2- there a something is wrong here or not ok the BookingControll is responsibile for many things not only booking functionallity for example
+2- there a something is wrong here or not ok the BookingControll is responsibile for many things not only booking functionallity for example .
+
+
+
    public function resendNotifications(Request $request)
     {
         $data = $request->all();
@@ -13,6 +16,8 @@ it use dependy injection in every where and that's a good way to use a Singlton 
 
         return response(['success' => 'Push sent']);
     }
+
+    
 sending notification is not responsibility for BookingControll it must be in another service so here  
 "We did not achieve the single responsibility principle"
 
